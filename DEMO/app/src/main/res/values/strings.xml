@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">DEMO</string>
+    <string name="start_activity">启动Activity</string>
+</resources>

@@ -1,0 +1,200 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 134742016 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2753), pid=4854, tid=0x00007fa38fefe700
+#
+# JRE version: OpenJDK Runtime Environment (8.0_202) (build 1.8.0_202-release-1483-b49-5587405)
+# Java VM: OpenJDK 64-Bit Server VM (25.202-b49-5587405 mixed mode linux-amd64 compressed oops)
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007fa3c8086000):  VMThread [stack: 0x00007fa38fdff000,0x00007fa38feff000] [id=4871]
+
+Stack: [0x00007fa38fdff000,0x00007fa38feff000],  sp=0x00007fa38fefd510,  free space=1017k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0xa08b78]  VMError::report_and_die()+0x148
+V  [libjvm.so+0x4d412a]  report_vm_out_of_memory(char const*, int, unsigned long, VMErrorType, char const*)+0x8a
+V  [libjvm.so+0x870478]  os::pd_commit_memory(char*, unsigned long, unsigned long, bool)+0xd8
+V  [libjvm.so+0x867f9f]  os::commit_memory(char*, unsigned long, unsigned long, bool)+0x1f
+V  [libjvm.so+0x8e14eb]  PSVirtualSpace::expand_by(unsigned long)+0x5b
+V  [libjvm.so+0x8e2140]  PSYoungGen::resize_generation(unsigned long, unsigned long)+0xb0
+V  [libjvm.so+0x8e245b]  PSYoungGen::resize(unsigned long, unsigned long)+0x1b
+V  [libjvm.so+0x8deb8e]  PSScavenge::invoke_no_policy()+0xdce
+V  [libjvm.so+0x8df348]  PSScavenge::invoke()+0x38
+V  [libjvm.so+0x893763]  ParallelScavengeHeap::failed_mem_allocate(unsigned long)+0x63
+V  [libjvm.so+0xa0a644]  VM_ParallelGCFailedAllocation::doit()+0x84
+V  [libjvm.so+0xa0ea17]  VM_Operation::evaluate()+0x47
+V  [libjvm.so+0xa0d498]  VMThread::evaluate_operation(VM_Operation*)+0x218
+V  [libjvm.so+0xa0d8d1]  VMThread::loop()+0x1f1
+V  [libjvm.so+0xa0dd02]  VMThread::run()+0x72
+V  [libjvm.so+0x86d652]  java_start(Thread*)+0xf2
+
+VM_Operation (0x00007fa2c3ffaba0): ParallelGCFailedAllocation, mode: safepoint, requested by thread 0x00007fa33c1fa000
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x00007fa274006000 JavaThread "ForkJoinPool.commonPool-worker-3" daemon [_thread_blocked, id=5009, stack(0x00007fa22f2f5000,0x00007fa22f3f6000)]
+  0x00007fa260001800 JavaThread "ForkJoinPool.commonPool-worker-10" daemon [_thread_blocked, id=5008, stack(0x00007fa22f3f6000,0x00007fa22f4f7000)]
+  0x00007fa26c001800 JavaThread "ForkJoinPool.commonPool-worker-1" daemon [_thread_blocked, id=5007, stack(0x00007fa22f4f7000,0x00007fa22f5f8000)]
+  0x00007fa268001800 JavaThread "ForkJoinPool.commonPool-worker-8" daemon [_thread_blocked, id=5006, stack(0x00007fa22f5f8000,0x00007fa22f6f9000)]
+  0x00007fa2cc035800 JavaThread "ForkJoinPool.commonPool-worker-15" daemon [_thread_blocked, id=5005, stack(0x00007fa22f6f9000,0x00007fa22f7fa000)]
+  0x00007fa2cc034000 JavaThread "ForkJoinPool.commonPool-worker-6" daemon [_thread_blocked, id=5004, stack(0x00007fa22f7fa000,0x00007fa22f8fb000)]
+  0x00007fa2cc032000 JavaThread "ForkJoinPool.commonPool-worker-13" daemon [_thread_blocked, id=5003, stack(0x00007fa22f8fb000,0x00007fa22f9fc000)]
+  0x00007fa258001800 JavaThread "ForkJoinPool.commonPool-worker-4" daemon [_thread_blocked, id=5002, stack(0x00007fa22f9fc000,0x00007fa22fafd000)]
+  0x00007fa2cc031000 JavaThread "ForkJoinPool.commonPool-worker-11" daemon [_thread_blocked, id=5001, stack(0x00007fa22fafd000,0x00007fa22fbfe000)]
+  0x00007fa2cc02d000 JavaThread "ForkJoinPool.commonPool-worker-2" daemon [_thread_blocked, id=5000, stack(0x00007fa22fbfe000,0x00007fa22fcff000)]
+  0x00007fa2cc02c000 JavaThread "ForkJoinPool.commonPool-worker-9" daemon [_thread_blocked, id=4999, stack(0x00007fa22fcff000,0x00007fa22fe00000)]
+  0x00007fa2a000e000 JavaThread "WorkerExecutor Queue Thread 11" [_thread_blocked, id=4998, stack(0x00007fa2c1caa000,0x00007fa2c1dab000)]
+  0x00007fa33d0dc800 JavaThread "Cache worker for Java compile cache (/home/yanbing/work/android_project/DEMO/.gradle/5.4.1/javaCompile)" [_thread_blocked, id=4997, stack(0x00007fa2c04ce000,0x00007fa2c05cf000)]
+  0x00007fa33c3a2800 JavaThread "Cache worker for Java compile cache (/home/yanbing/.gradle/caches/5.4.1/javaCompile)" [_thread_blocked, id=4996, stack(0x00007fa2c05cf000,0x00007fa2c06d0000)]
+  0x00007fa27c004800 JavaThread "stdout" [_thread_in_native, id=4991, stack(0x00007fa2c06d0000,0x00007fa2c07d1000)]
+  0x00007fa27c003000 JavaThread "stderr" [_thread_in_native, id=4990, stack(0x00007fa2c07d1000,0x00007fa2c08d2000)]
+  0x00007fa288011000 JavaThread "stdout" [_thread_in_native, id=4989, stack(0x00007fa2c08d2000,0x00007fa2c09d3000)]
+  0x00007fa28800f800 JavaThread "stderr" [_thread_in_native, id=4988, stack(0x00007fa2c09d3000,0x00007fa2c0ad4000)]
+  0x00007fa29804c000 JavaThread "stdout" [_thread_in_native, id=4987, stack(0x00007fa2c0ad4000,0x00007fa2c0bd5000)]
+  0x00007fa29c035000 JavaThread "stdout" [_thread_in_native, id=4986, stack(0x00007fa2c0bd5000,0x00007fa2c0cd6000)]
+  0x00007fa29c033000 JavaThread "stderr" [_thread_in_native, id=4985, stack(0x00007fa2c0cd6000,0x00007fa2c0dd7000)]
+  0x00007fa28c044000 JavaThread "stdout" [_thread_in_native, id=4984, stack(0x00007fa2c0dd7000,0x00007fa2c0ed8000)]
+  0x00007fa29804a000 JavaThread "stderr" [_thread_in_native, id=4983, stack(0x00007fa2c0ed8000,0x00007fa2c0fd9000)]
+  0x00007fa280031800 JavaThread "stdout" [_thread_in_native, id=4982, stack(0x00007fa2c0fd9000,0x00007fa2c10da000)]
+  0x00007fa280030000 JavaThread "stderr" [_thread_in_native, id=4981, stack(0x00007fa2c10da000,0x00007fa2c11db000)]
+  0x00007fa28c042800 JavaThread "stderr" [_thread_in_native, id=4980, stack(0x00007fa2c11db000,0x00007fa2c12dc000)]
+  0x00007fa29c031800 JavaThread "process reaper" daemon [_thread_in_native, id=4979, stack(0x00007fa2c12dc000,0x00007fa2c1315000)]
+  0x00007fa27c001800 JavaThread "process reaper" daemon [_thread_in_native, id=4978, stack(0x00007fa2c1315000,0x00007fa2c134e000)]
+  0x00007fa28800d800 JavaThread "process reaper" daemon [_thread_in_native, id=4977, stack(0x00007fa2c134e000,0x00007fa2c1387000)]
+  0x00007fa294052800 JavaThread "stdout" [_thread_in_native, id=4976, stack(0x00007fa2c1387000,0x00007fa2c1488000)]
+  0x00007fa294026000 JavaThread "stderr" [_thread_in_native, id=4975, stack(0x00007fa2c1488000,0x00007fa2c1589000)]
+  0x00007fa28c03d000 JavaThread "process reaper" daemon [_thread_in_native, id=4972, stack(0x00007fa2c1589000,0x00007fa2c15c2000)]
+  0x00007fa294028800 JavaThread "process reaper" daemon [_thread_in_native, id=4971, stack(0x00007fa2c15c2000,0x00007fa2c15fb000)]
+  0x00007fa28002f000 JavaThread "process reaper" daemon [_thread_in_native, id=4970, stack(0x00007fa2c15fb000,0x00007fa2c1634000)]
+  0x00007fa298048800 JavaThread "process reaper" daemon [_thread_in_native, id=4969, stack(0x00007fa2c1634000,0x00007fa2c166d000)]
+  0x00007fa29003a000 JavaThread "stdout" [_thread_in_native, id=4968, stack(0x00007fa2c166d000,0x00007fa2c176e000)]
+  0x00007fa290038800 JavaThread "stderr" [_thread_in_native, id=4967, stack(0x00007fa2c176e000,0x00007fa2c186f000)]
+  0x00007fa290036000 JavaThread "process reaper" daemon [_thread_in_native, id=4966, stack(0x00007fa2c186f000,0x00007fa2c18a8000)]
+  0x00007fa288003000 JavaThread "pool-2-thread-1" [_thread_blocked, id=4959, stack(0x00007fa2c18a8000,0x00007fa2c19a9000)]
+  0x00007fa33d5d9000 JavaThread "WorkerExecutor Queue Thread 10" [_thread_blocked, id=4958, stack(0x00007fa2c1ba9000,0x00007fa2c1caa000)]
+  0x00007fa33d55e800 JavaThread "WorkerExecutor Queue Thread 8" [_thread_blocked, id=4956, stack(0x00007fa2c1dab000,0x00007fa2c1eac000)]
+  0x00007fa29801a800 JavaThread "MarlinRenderer Disposer" daemon [_thread_blocked, id=4955, stack(0x00007fa2c1eac000,0x00007fa2c1fad000)]
+  0x00007fa29401a800 JavaThread "Java2D Disposer" daemon [_thread_blocked, id=4954, stack(0x00007fa2c1fad000,0x00007fa2c20ae000)]
+  0x00007fa33d2e4800 JavaThread "WorkerExecutor Queue Thread 7" [_thread_blocked, id=4953, stack(0x00007fa2c2383000,0x00007fa2c2484000)]
+  0x00007fa33d2e0800 JavaThread "WorkerExecutor Queue Thread 6" [_thread_blocked, id=4952, stack(0x00007fa2c2484000,0x00007fa2c2585000)]
+  0x00007fa33d2de800 JavaThread "WorkerExecutor Queue Thread 5" [_thread_blocked, id=4951, stack(0x00007fa2c2585000,0x00007fa2c2686000)]
+  0x00007fa33d2dd000 JavaThread "WorkerExecutor Queue Thread 4" [_thread_blocked, id=4950, stack(0x00007fa2c2686000,0x00007fa2c2787000)]
+  0x00007fa33d2db800 JavaThread "WorkerExecutor Queue Thread 3" [_thread_blocked, id=4949, stack(0x00007fa2c2787000,0x00007fa2c2888000)]
+  0x00007fa33d2db000 JavaThread "WorkerExecutor Queue Thread 2" [_thread_blocked, id=4948, stack(0x00007fa2c2888000,0x00007fa2c2989000)]
+  0x00007fa33d2d9800 JavaThread "WorkerExecutor Queue" [_thread_blocked, id=4947, stack(0x00007fa2c2989000,0x00007fa2c2a8a000)]
+  0x00007fa2cc00e800 JavaThread "Cache worker for execution history cache (/home/yanbing/work/android_project/DEMO/.gradle/5.4.1/executionHistory)" [_thread_blocked, id=4945, stack(0x00007fa2c36f9000,0x00007fa2c37fa000)]
+  0x00007fa33c22a800 JavaThread "Execution worker for ':' Thread 11" [_thread_blocked, id=4944, stack(0x00007fa2c39fa000,0x00007fa2c3afb000)]
+  0x00007fa33c229000 JavaThread "Execution worker for ':' Thread 10" [_thread_blocked, id=4943, stack(0x00007fa2c3afb000,0x00007fa2c3bfc000)]
+  0x00007fa33c227000 JavaThread "Execution worker for ':' Thread 9" [_thread_blocked, id=4942, stack(0x00007fa2c3bfc000,0x00007fa2c3cfd000)]
+  0x00007fa33c225800 JavaThread "Execution worker for ':' Thread 8" [_thread_blocked, id=4941, stack(0x00007fa2c3cfd000,0x00007fa2c3dfe000)]
+  0x00007fa33c1fb800 JavaThread "Execution worker for ':' Thread 7" [_thread_blocked, id=4940, stack(0x00007fa2c3dfe000,0x00007fa2c3eff000)]
+  0x00007fa33c1fa000 JavaThread "Execution worker for ':' Thread 6" [_thread_blocked, id=4939, stack(0x00007fa2c3eff000,0x00007fa2c4000000)]
+  0x00007fa33c1f8000 JavaThread "Execution worker for ':' Thread 5" [_thread_blocked, id=4938, stack(0x00007fa368030000,0x00007fa368131000)]
+  0x00007fa33c1f6800 JavaThread "Execution worker for ':' Thread 4" [_thread_blocked, id=4937, stack(0x00007fa368131000,0x00007fa368232000)]
+  0x00007fa33c1f5800 JavaThread "Execution worker for ':' Thread 3" [_thread_blocked, id=4936, stack(0x00007fa368232000,0x00007fa368333000)]
+  0x00007fa33c9c2800 JavaThread "Execution worker for ':' Thread 2" [_thread_blocked, id=4935, stack(0x00007fa368333000,0x00007fa368434000)]
+  0x00007fa33c9c0800 JavaThread "Execution worker for ':'" [_thread_blocked, id=4934, stack(0x00007fa368434000,0x00007fa368535000)]
+  0x00007fa33dd19800 JavaThread "Cache worker for file content cache (/home/yanbing/work/android_project/DEMO/.gradle/5.4.1/fileContent)" [_thread_blocked, id=4933, stack(0x00007fa368948000,0x00007fa368a49000)]
+  0x00007fa33dd18800 JavaThread "Cache worker for file content cache (/home/yanbing/.gradle/caches/5.4.1/fileContent)" [_thread_blocked, id=4932, stack(0x00007fa368a49000,0x00007fa368b4a000)]
+  0x00007fa33dcfb800 JavaThread "Memory manager" [_thread_blocked, id=4931, stack(0x00007fa368b4a000,0x00007fa368c4b000)]
+  0x00007fa33d91c000 JavaThread "Cache worker for Build Output Cleanup Cache (/home/yanbing/work/android_project/DEMO/.gradle/buildOutputCleanup)" [_thread_blocked, id=4920, stack(0x00007fa36966e000,0x00007fa36976f000)]
+  0x00007fa33d823800 JavaThread "pool-1-thread-1" [_thread_blocked, id=4919, stack(0x00007fa36996f000,0x00007fa369a70000)]
+  0x00007fa33d292800 JavaThread "Build operations Thread 12" [_thread_blocked, id=4918, stack(0x00007fa36a2bf000,0x00007fa36a3c0000)]
+  0x00007fa33d290800 JavaThread "Build operations Thread 11" [_thread_blocked, id=4917, stack(0x00007fa36a3c0000,0x00007fa36a4c1000)]
+  0x00007fa33d28f000 JavaThread "Build operations Thread 10" [_thread_blocked, id=4916, stack(0x00007fa36a4c1000,0x00007fa36a5c2000)]
+  0x00007fa33d28d000 JavaThread "Build operations Thread 9" [_thread_blocked, id=4915, stack(0x00007fa36a5c2000,0x00007fa36a6c3000)]
+  0x00007fa33d28b800 JavaThread "Build operations Thread 8" [_thread_blocked, id=4914, stack(0x00007fa36a6c3000,0x00007fa36a7c4000)]
+  0x00007fa33d289800 JavaThread "Build operations Thread 7" [_thread_blocked, id=4913, stack(0x00007fa36a7c4000,0x00007fa36a8c5000)]
+  0x00007fa33d287800 JavaThread "Build operations Thread 6" [_thread_blocked, id=4912, stack(0x00007fa36a8c5000,0x00007fa36a9c6000)]
+  0x00007fa33d285800 JavaThread "Build operations Thread 5" [_thread_blocked, id=4911, stack(0x00007fa36a9c6000,0x00007fa36aac7000)]
+  0x00007fa33d284000 JavaThread "Build operations Thread 4" [_thread_blocked, id=4910, stack(0x00007fa36aac7000,0x00007fa36abc8000)]
+  0x00007fa33d282000 JavaThread "Build operations Thread 3" [_thread_blocked, id=4909, stack(0x00007fa36abc8000,0x00007fa36acc9000)]
+  0x00007fa33d280800 JavaThread "Build operations Thread 2" [_thread_blocked, id=4908, stack(0x00007fa36acc9000,0x00007fa36adca000)]
+  0x00007fa33d27e800 JavaThread "Build operations" [_thread_blocked, id=4907, stack(0x00007fa36adca000,0x00007fa36aecb000)]
+  0x00007fa33d176800 JavaThread "Cache worker for execution history cache (/home/yanbing/.gradle/caches/5.4.1/executionHistory)" [_thread_blocked, id=4906, stack(0x00007fa36b0cb000,0x00007fa36b1cc000)]
+  0x00007fa33d14b000 JavaThread "Cache worker for cache directory md-rule (/home/yanbing/.gradle/caches/5.4.1/md-rule)" [_thread_blocked, id=4905, stack(0x00007fa36b3cc000,0x00007fa36b4cd000)]
+  0x00007fa33d13e800 JavaThread "Cache worker for cache directory md-supplier (/home/yanbing/.gradle/caches/5.4.1/md-supplier)" [_thread_blocked, id=4904, stack(0x00007fa36b4cd000,0x00007fa36b5ce000)]
+  0x00007fa33c897000 JavaThread "Cache worker for file hash cache (/home/yanbing/work/android_project/DEMO/.gradle/5.4.1/fileHashes)" [_thread_blocked, id=4903, stack(0x00007fa38c654000,0x00007fa38c755000)]
+  0x00007fa33c114000 JavaThread "Cache worker for journal cache (/home/yanbing/.gradle/caches/journal-1)" [_thread_blocked, id=4902, stack(0x00007fa38cb62000,0x00007fa38cc63000)]
+  0x00007fa33c111000 JavaThread "File lock request listener" [_thread_in_native, id=4901, stack(0x00007fa38cc63000,0x00007fa38cd64000)]
+  0x00007fa33c109000 JavaThread "Cache worker for file hash cache (/home/yanbing/.gradle/caches/5.4.1/fileHashes)" [_thread_blocked, id=4900, stack(0x00007fa38cd64000,0x00007fa38ce65000)]
+  0x00007fa33c018000 JavaThread "Thread-9" [_thread_blocked, id=4899, stack(0x00007fa38ce65000,0x00007fa38cf66000)]
+  0x00007fa33c00f800 JavaThread "Stdin handler" [_thread_blocked, id=4898, stack(0x00007fa38d166000,0x00007fa38d267000)]
+  0x00007fa33c00d800 JavaThread "Asynchronous log dispatcher for DefaultDaemonConnection: socket connection from /127.0.0.1:39793 to /127.0.0.1:46032" [_thread_blocked, id=4897, stack(0x00007fa38d267000,0x00007fa38d368000)]
+  0x00007fa350008000 JavaThread "Daemon worker" [_thread_blocked, id=4894, stack(0x00007fa38d368000,0x00007fa38d469000)]
+  0x00007fa350006000 JavaThread "Cancel handler" [_thread_blocked, id=4893, stack(0x00007fa38d469000,0x00007fa38d56a000)]
+  0x00007fa350004000 JavaThread "Handler for socket connection from /127.0.0.1:39793 to /127.0.0.1:46032" [_thread_in_native, id=4892, stack(0x00007fa38d56a000,0x00007fa38d66b000)]
+  0x00007fa35801d800 JavaThread "Daemon" [_thread_blocked, id=4891, stack(0x00007fa38d66b000,0x00007fa38d76c000)]
+  0x00007fa3c9277000 JavaThread "Daemon periodic checks" [_thread_blocked, id=4890, stack(0x00007fa38d76c000,0x00007fa38d86d000)]
+  0x00007fa3c9247800 JavaThread "Incoming local TCP Connector on port 39793" [_thread_in_native, id=4889, stack(0x00007fa38d874000,0x00007fa38d975000)]
+  0x00007fa3c91cd000 JavaThread "Daemon health stats" [_thread_blocked, id=4888, stack(0x00007fa38db79000,0x00007fa38dc7a000)]
+  0x00007fa3c80d8000 JavaThread "Service Thread" daemon [_thread_blocked, id=4881, stack(0x00007fa38ec27000,0x00007fa38ed28000)]
+  0x00007fa3c80cd800 JavaThread "C1 CompilerThread3" daemon [_thread_blocked, id=4880, stack(0x00007fa38ed29000,0x00007fa38ee29000)]
+  0x00007fa3c80cb000 JavaThread "C2 CompilerThread2" daemon [_thread_blocked, id=4879, stack(0x00007fa38ee2a000,0x00007fa38ef2a000)]
+  0x00007fa3c80c9800 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=4878, stack(0x00007fa38ef2b000,0x00007fa38f02b000)]
+  0x00007fa3c80c6800 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=4877, stack(0x00007fa38f02c000,0x00007fa38f12c000)]
+  0x00007fa3c80c2800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=4876, stack(0x00007fa38f12c000,0x00007fa38f22d000)]
+  0x00007fa3c8092800 JavaThread "Finalizer" daemon [_thread_blocked, id=4875, stack(0x00007fa38fbfc000,0x00007fa38fcfd000)]
+  0x00007fa3c8090000 JavaThread "Reference Handler" daemon [_thread_blocked, id=4874, stack(0x00007fa38fcfd000,0x00007fa38fdfe000)]
+  0x00007fa3c800c000 JavaThread "main" [_thread_blocked, id=4858, stack(0x00007fa3d0747000,0x00007fa3d0847000)]
+
+Other Threads:
+=>0x00007fa3c8086000 VMThread [stack: 0x00007fa38fdff000,0x00007fa38feff000] [id=4871]
+  0x00007fa3c80da800 WatcherThread [stack: 0x00007fa38eb27000,0x00007fa38ec27000] [id=4882]
+
+VM state:at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007fa3c80088f0] Threads_lock - owner thread: 0x00007fa3c8086000
+[0x00007fa3c8008df0] Heap_lock - owner thread: 0x00007fa33c1fa000
+
+heap address: 0x00000000a0000000, size: 1536 MB, Compressed Oops mode: 32-bit
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 3
+Compressed class space size: 1073741824 Address: 0x0000000100000000
+
+Heap:
+ PSYoungGen      total 324608K, used 19628K [0x00000000e0000000, 0x00000000f6800000, 0x0000000100000000)
+  eden space 295424K, 0% used [0x00000000e0000000,0x00000000e0000000,0x00000000f2080000)
+  from space 29184K, 67% used [0x00000000f2080000,0x00000000f33ab3a0,0x00000000f3d00000)
+  to   space 29696K, 0% used [0x00000000f3d00000,0x00000000f3d00000,0x00000000f5a00000)
+ ParOldGen       total 252416K, used 57155K [0x00000000a0000000, 0x00000000af680000, 0x00000000e0000000)
+  object space 252416K, 22% used [0x00000000a0000000,0x00000000a37d0e20,0x00000000af680000)
+ Metaspace       used 84796K, capacity 89352K, committed 89472K, reserved 1126400K
+  class space    used 11467K, capacity 12301K, committed 12416K, reserved 1048576K
+
+Card table byte_map: [0x00007fa3cdc62000,0x00007fa3cdf63000] byte_map_base: 0x00007fa3cd762000
+
+Marking Bits: (ParMarkBitMap*) 0x00007fa3cfe16920
+ Begin Bits: [0x00007fa395000000, 0x00007fa396800000)
+ End Bits:   [0x00007fa396800000, 0x00007fa398000000)
+
+Polling page: 0x00007fa3d086e000
+
+CodeCache: size=245760Kb used=32747Kb max_used=32752Kb free=213012Kb
+ bounds [0x00007fa3b9000000, 0x00007fa3bb030000, 0x00007fa3c8000000]
+ total_blobs=11739 nmethods=10760 adapters=892
+ compilation: enabled
+
+Compilation events (10 events):
